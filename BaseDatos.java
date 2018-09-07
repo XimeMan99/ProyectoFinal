@@ -64,6 +64,9 @@ import java.util.ArrayList;
 		alumno.setEstatus(estatus);
 		alumno.setNombreUsuario(nombreUsuario);
 		alumno.setContra(contra);
+		//Se guarda el nuevo alumno en el ArrayList usuarios
+		usuarios.add(alumno);
+	
 		
 		
 		
