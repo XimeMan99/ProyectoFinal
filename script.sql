@@ -1,6 +1,5 @@
 -- mysql -h localhost -u root -p1234 //para conectar mysql desde consola root:nombreUsuario y 1234:contraseña
 -- https://dev.mysql.com/downloads/connector/j/5.0.html
-
 DROP DATABASE base;
 
 CREATE DATABASE base;
@@ -47,6 +46,14 @@ CREATE TABLE tipo_alumno (
 	nombre VARCHAR(200)
 );
 
+CREATE TABLE objeto_perdido (
+	cod_objeto  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nombre  VARCHAR(200),
+	lugar	 VARCHAR(200),
+	fecha   DATE,
+	alumno_cod_alumno  INT
+);
+
 ALTER TABLE alumno
     ADD CONSTRAINT alumno_cod_tipo_fk FOREIGN KEY ( tipo_alumno_cod_tipo )
         REFERENCES tipo_alumno ( cod_tipo ) ON DELETE CASCADE
@@ -71,8 +78,9 @@ ALTER TABLE estado_documento
     ADD CONSTRAINT estado_documento_documento_fk FOREIGN KEY ( documento_cod_documento )
         REFERENCES documento ( cod_documento ) ON DELETE CASCADE
 ;
+
 INSERT INTO tipo_alumno (nombre) 
-	VALUES ('Estudiante'),('Auxiliar');
+	VALUES ('Estudiante'),('Auxiliar'),('Administrador');
 
 INSERT INTO curso (nombre)
 	VALUES ('CU170'),('MM2021'),('CC2008'),
@@ -84,4 +92,5 @@ INSERT INTO alumno(carnet, contraseña, nombre, tipo_alumno_cod_tipo)
 	VALUES ('1','1','Luffy Aux', 2),
 	('2','1','Zoro Alumno', 1),
 	('3','1','Nami Alumna', 1),
-	('4','1','Shanks Aux',2);
+	('4','1','Shanks Aux',2),
+	('5','1','Chopper Admin',3);
